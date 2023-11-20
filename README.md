@@ -1,3 +1,6 @@
+![image](https://raw.githubusercontent.com/AshiVered/support-israel-banner/main/assets/support-israel-banner.jpg)
+
+
 # Android-Safe-browser
 A simple Webview based browser with a whitelist of allowed URLs.
 It downloads content using the Phone's internal downloader.
