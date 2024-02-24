@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">דפדפן מוגן</string>
+    <string name="blocked_page">אתר זה חסום!</string>
+    <string name="downloading">מוריד קובץ...</string>
+    <string name="title_activity_settings">הגדרות</string>
+
+    <!-- Preference Titles -->
+    <string name="settigs_header">התאם אישית את החסימה</string>
+
+    <!-- Sync Preferences -->
+    <string name="photos_title">חסום מדיה</string>
+    <string name="attachment_title">Block photos</string>
+    <string name="block_media_on">קבצי מדיה חסומים. לא תוכל לצפות בתמונות, וידאו, וכדו\'</string>
+    <string name="block_media_off">מדיה מאופשרת</string>
+    <string name="block_ads">block Google ads in sites</string>
+    <string name="block_ads_on">ads is blocked.</string>
+    <string name="block_ads_off">ads not blocked.</string>
+    <string name="PhotosBlocked">הצגת מדיה חסומה</string>
+    <string name="PhotosNotBlocked">הצגת מדיה מאופשרת</string>
+</resources>

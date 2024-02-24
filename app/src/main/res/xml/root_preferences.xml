@@ -1,0 +1,14 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="@string/settigs_header">
+
+        <SwitchPreferenceCompat
+            android:key="photos"
+            app:summaryOff="@string/block_media_off"
+            app:summaryOn="@string/block_media_on"
+            app:title="@string/photos_title" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
