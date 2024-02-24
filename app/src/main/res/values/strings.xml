@@ -1,5 +1,0 @@
-<resources>
-    <string name="app_name">Safe browser</string>
-    <string name="blocked_page">this site is not allowed!</string>
-    <string name="downloading">downloading file...</string>
-</resources>
