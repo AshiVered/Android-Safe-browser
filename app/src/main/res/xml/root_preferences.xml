@@ -8,6 +8,11 @@
             app:summaryOff="@string/block_media_off"
             app:summaryOn="@string/block_media_on"
             app:title="@string/photos_title" />
+        <SwitchPreferenceCompat
+            android:key="news"
+            app:summaryOff="@string/block_news_off"
+            app:summaryOn="@string/block_news_on"
+            app:title="@string/news_title" />
 
     </PreferenceCategory>
 

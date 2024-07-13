@@ -17,4 +17,5 @@
     <string name="block_ads_off">ads not blocked.</string>
     <string name="PhotosBlocked">הצגת מדיה חסומה</string>
     <string name="PhotosNotBlocked">הצגת מדיה מאופשרת</string>
+    <string name="block_news_off">You can acsses to news sites</string>
 </resources>

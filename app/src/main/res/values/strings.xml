@@ -17,4 +17,7 @@
     <string name="block_ads_off">ads not blocked.</string>
     <string name="PhotosBlocked">Media blocked</string>
     <string name="PhotosNotBlocked">Media not blocked</string>
+    <string name="block_news_off">You can acsses to news sites</string>
+    <string name="block_news_on">news sites blocked</string>
+    <string name="news_title">Block news</string>
 </resources>
