@@ -32,6 +32,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -41,12 +42,19 @@ public class MainActivity extends Activity { private final int STORAGE_PERMISSIO
     private Button settingsButton;
     private SharedPreferences sp;
     private List<String> whiteHosts;
+    String domain;
 
 
 
 
     public void blockString() {
-        Toast.makeText(this, R.string.blocked_page, Toast.LENGTH_LONG).show();
+        sp = PreferenceManager.getDefaultSharedPreferences(this);
+        Boolean url = sp.getBoolean("URL", false);
+        if (url) {
+            Toast.makeText(this, domain + " " + getString(R.string.blocked_page), Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, R.string.blocked_page, Toast.LENGTH_LONG).show();
+        }
     }
     public void onBackPressed () {
         if (mWebView.canGoBack()) {
@@ -139,6 +147,7 @@ public class MainActivity extends Activity { private final int STORAGE_PERMISSIO
             Boolean photos = sp.getBoolean("photos", false);
             WebSettings webFilters = mWebView.getSettings();
             String host = Uri.parse(url).getHost();
+            domain = Uri.parse(url).getHost();
             if (whiteHosts.contains(host)) {
                 if (photos) {
                     webFilters.setLoadsImagesAutomatically(false);

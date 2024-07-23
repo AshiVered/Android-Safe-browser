@@ -1,7 +1,7 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory app:title="@string/settigs_header">
+    <PreferenceCategory app:title="@string/settigs_block">
 
         <SwitchPreferenceCompat
             android:key="photos"
@@ -13,6 +13,16 @@
             app:summaryOff="@string/block_news_off"
             app:summaryOn="@string/block_news_on"
             app:title="@string/news_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/settigs_view">
+
+        <SwitchPreferenceCompat
+            android:key="URL"
+            app:summaryOff="@string/show_url_off"
+            app:summaryOn="@string/show_url_on"
+            app:title="@string/url_title" />
+
 
     </PreferenceCategory>
 

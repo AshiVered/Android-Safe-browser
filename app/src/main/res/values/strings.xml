@@ -5,7 +5,7 @@
     <string name="title_activity_settings">Settings</string>
 
     <!-- Preference Titles -->
-    <string name="settigs_header">Custom block settings</string>
+    <string name="settigs_block">Block settings</string>
 
     <!-- Sync Preferences -->
     <string name="photos_title">Block media</string>
@@ -20,4 +20,8 @@
     <string name="block_news_off">You can acsses to news sites</string>
     <string name="block_news_on">news sites blocked</string>
     <string name="news_title">Block news</string>
+    <string name="settigs_view">View settings</string>
+    <string name="show_url_on">Show blocked URL in blocking notification</string>
+    <string name="show_url_off">Don\'t show blocked URL in blocking notification</string>
+    <string name="url_title">Show URL</string>
 </resources>

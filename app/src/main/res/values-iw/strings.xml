@@ -5,7 +5,7 @@
     <string name="title_activity_settings">הגדרות</string>
 
     <!-- Preference Titles -->
-    <string name="settigs_header">התאם אישית את החסימה</string>
+    <string name="settigs_block">הגדרות חסימה</string>
 
     <!-- Sync Preferences -->
     <string name="photos_title">חסום מדיה</string>
@@ -17,5 +17,12 @@
     <string name="block_ads_off">ads not blocked.</string>
     <string name="PhotosBlocked">הצגת מדיה חסומה</string>
     <string name="PhotosNotBlocked">הצגת מדיה מאופשרת</string>
-    <string name="block_news_off">You can acsses to news sites</string>
+    <string name="block_news_on">אתרי חדשות חסומים</string>
+    <string name="news_title">חסום אתרי חדשות</string>
+    <string name="block_news_off">אתרי חדשות מאופשרים</string>
+    <string name="settigs_view">הגדרות תצוגה</string>
+    <string name="show_url_off">אל תציג את כתובת האתר שנחסם בהתראת החסימה</string>
+    <string name="show_url_on">הצג את כתובת האתר שנחסם בהתראת החסימה</string>
+    <string name="url_title">הצגת URL</string>
+
 </resources>
