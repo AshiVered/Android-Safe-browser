@@ -129,7 +129,9 @@ public class LoadUrl extends Activity { private final int STORAGE_PERMISSION_COD
         if (intent != null && Intent.ACTION_VIEW.equals(intent.getAction())) {
             Uri data = intent.getData();
             if (data != null) {
-                if (whiteHosts.contains(data.toString())) {
+                String host = Uri.parse(data.toString()).getHost();
+                domain = Uri.parse(data.toString()).getHost();
+                if (whiteHosts.contains(host)) {
                     mWebView.loadUrl(data.toString());
                 } else {
                     blockString();
