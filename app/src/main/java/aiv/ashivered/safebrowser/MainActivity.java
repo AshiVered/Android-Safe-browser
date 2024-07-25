@@ -59,7 +59,7 @@ public class MainActivity extends Activity { private final int STORAGE_PERMISSIO
     public void onBackPressed () {
         if (mWebView.canGoBack()) {
             mWebView.goBack();
-        } else if (mWebView.canGoBack()) {
+        } else {
             super.onBackPressed();
         }
     }

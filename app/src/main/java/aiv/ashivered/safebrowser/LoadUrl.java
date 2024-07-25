@@ -60,7 +60,7 @@ public class LoadUrl extends Activity { private final int STORAGE_PERMISSION_COD
     public void onBackPressed () {
         if (mWebView.canGoBack()) {
             mWebView.goBack();
-        } else if (mWebView.canGoBack()) {
+        } else {
             super.onBackPressed();
         }
     }
@@ -135,8 +135,9 @@ public class LoadUrl extends Activity { private final int STORAGE_PERMISSION_COD
                     mWebView.loadUrl(data.toString());
                 } else {
                     blockString();
-                    Intent goMain = new Intent(this, MainActivity.class);
-                    startActivity(goMain);
+                 /*   Intent goMain = new Intent(this, MainActivity.class);
+                    startActivity(goMain); */
+                    finish();
                 }
             }
         }
