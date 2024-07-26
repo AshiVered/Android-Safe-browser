@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">SafeBrowser</string>
+
+    <string name="app_name">Safe Browser</string>
     <string name="blocked_page">This site is not allowed!</string>
     <string name="downloading">Downloading file...</string>
     <string name="title_activity_settings">Settings</string>
@@ -10,18 +11,31 @@
     <!-- Sync Preferences -->
     <string name="photos_title">Block media</string>
     <string name="attachment_title">Block media</string>
-    <string name="block_media_on">the media is blocked. you can\'t photos, video, and etc. in sites.</string>
-    <string name="block_media_off">the media is not blocked</string>
-    <string name="block_ads">block Google ads in sites</string>
-    <string name="block_ads_on">ads is blocked.</string>
-    <string name="block_ads_off">ads not blocked.</string>
+    <string name="block_media_on">The media is blocked. You can\'t see photos, video, and etc. in sites.</string>
+    <string name="block_media_off">The media is not blocked.</string>
+    <string name="block_ads">Block Google ads in sites</string>
+    <string name="block_ads_on">Ads are blocked.</string>
+    <string name="block_ads_off">Ads not blocked.</string>
     <string name="PhotosBlocked">Media blocked</string>
     <string name="PhotosNotBlocked">Media not blocked</string>
-    <string name="block_news_off">You can acsses to news sites</string>
-    <string name="block_news_on">news sites blocked</string>
+    <string name="block_news_off">You can access news sites.</string>
+    <string name="block_news_on">News sites are blocked.</string>
     <string name="news_title">Block news</string>
-    <string name="settigs_view">View settings</string>
+    <string name="settigs_general">General settings</string>
     <string name="show_url_on">Show blocked URL in blocking notification</string>
     <string name="show_url_off">Don\'t show blocked URL in blocking notification</string>
     <string name="url_title">Show URL</string>
+    <string name="info">Information</string>
+    <string name="app_ver">2.0</string>
+    <string name="app_dev_info">Developer</string>
+    <string name="name_ver">Safe Browser version</string>
+    <string name="app_dev">This app developed by Ashi Vered as open source. The source code is available on GitHub:
+    \n https://github.com/AshiVered/Android-Safe-Browser
+    \n The application is developed voluntarily, without any financial gain.
+        If you enjoyed it - I would love for you to donate a little :), contact me by email.
+    </string>
+   <string name="contcat">Contact</string>
+    <string name="contact_info">For contact, ideas, requests, donations etc.:
+    \n ashivered.apps@gmail.com</string>
+
 </resources>

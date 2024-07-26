@@ -15,13 +15,33 @@
             app:title="@string/news_title" />
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/settigs_view">
+    <PreferenceCategory app:title="@string/settigs_general">
 
         <SwitchPreferenceCompat
             android:key="URL"
             app:summaryOff="@string/show_url_off"
             app:summaryOn="@string/show_url_on"
             app:title="@string/url_title" />
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/info">
+        <Preference
+            android:key="Version"
+            android:title="@string/name_ver"
+            android:summary="@string/app_ver"
+            android:selectable="false" />
+        <Preference
+            android:key="Developer"
+            android:title="@string/app_dev_info"
+            android:summary="@string/app_dev"
+            android:selectable="false" />
+        <Preference
+            android:key="Contatact"
+            android:title="@string/contcat"
+            android:summary="@string/contact_info"
+            android:selectable="false" />
 
 
     </PreferenceCategory>
