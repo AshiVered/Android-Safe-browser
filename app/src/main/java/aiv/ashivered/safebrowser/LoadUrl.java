@@ -8,18 +8,21 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.webkit.CookieManager;
+import android.webkit.JavascriptInterface;
 import android.webkit.URLUtil;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
@@ -41,6 +44,7 @@ public class LoadUrl extends Activity {
     private SharedPreferences sp;
     private List<String> whiteHosts = new ArrayList<>();
     private String domain;
+    private TextView websiteName;
 
     @SuppressLint("MissingInflatedId")
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -69,6 +73,8 @@ public class LoadUrl extends Activity {
 
     private void initializeWebView() {
         mWebView = findViewById(R.id.activity_load_url_webview);
+        mWebView.addJavascriptInterface(new GetTitleUsingJs(), "AndroidFunction");
+        websiteName = findViewById(R.id.website_name);
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
@@ -177,6 +183,12 @@ public class LoadUrl extends Activity {
 
     private class HelloWebViewClient extends WebViewClient {
         @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
+            // Clear the website name and icon at the start of loading a new page
+            websiteName.setText("");
+        }
+        @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             Boolean photos = sp.getBoolean("photos", false);
             WebSettings webFilters = mWebView.getSettings();
@@ -199,9 +211,18 @@ public class LoadUrl extends Activity {
         public void onPageFinished(WebView view, String url) {
             Boolean photosInFinish = sp.getBoolean("photos", false);
             super.onPageFinished(view, url);
+            view.loadUrl("javascript:window.AndroidFunction.setTitle(document.title);");
+
             if (photosInFinish) {
                 view.loadUrl("javascript: (() => { function handle(node) { if (node.tagName === 'IMG' && node.style.visibility !== 'hidden' && node.width > 32 && node.height > 32) { const blankImageUrl = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='; const { width, height } = window.getComputedStyle(node); node.src = blankImageUrl; node.style.visibility = 'hidden'; node.style.background = 'none'; node.style.backgroundImage = `url(${blankImageUrl})`; node.style.width = width; node.style.height = height; } else if (node.tagName === 'VIDEO' || node.tagName === 'IFRAME' || ((!node.type || node.type.includes('video')) && node.tagName === 'SOURCE') || node.tagName === 'OBJECT') { node.remove(); } } document.querySelectorAll('img,video,source,object,embed,iframe,[type^=video]').forEach(handle); const observer = new MutationObserver((mutations) => mutations.forEach((mutation) => mutation.addedNodes.forEach(handle))); observer.observe(document.body, { childList: true, subtree: true }); })();");
             }
+        }
+
+    }
+    private class GetTitleUsingJs {
+        @JavascriptInterface
+        public void setTitle(String title) {
+            runOnUiThread(() -> websiteName.setText(title));
         }
     }
 }
