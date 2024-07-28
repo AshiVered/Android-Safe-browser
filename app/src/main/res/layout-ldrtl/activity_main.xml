@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoadUrl">
+    tools:context=".MainActivity">
     <LinearLayout
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:gravity="left">
+        android:gravity="right">
 
 
         <TextView
@@ -22,7 +22,7 @@
     </LinearLayout>
 
     <WebView
-        android:id="@+id/activity_load_url_webview"
+        android:id="@+id/activity_main_webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="100px"/>

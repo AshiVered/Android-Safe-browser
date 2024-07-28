@@ -10,7 +10,7 @@
         android:layout_height="100dp"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:gravity="right">
+        android:gravity="left">
 
 
         <TextView
