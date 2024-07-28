@@ -46,6 +46,7 @@ public class LoadUrl extends Activity {
     private String domain;
     private TextView websiteName;
 
+
     @SuppressLint("MissingInflatedId")
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override

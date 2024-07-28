@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -14,6 +15,11 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.JavascriptInterface;
@@ -26,8 +32,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
+import androidx.core.text.HtmlCompat;
 import androidx.preference.PreferenceManager;
 
 import java.io.BufferedReader;
@@ -48,6 +57,8 @@ public class MainActivity extends Activity {
     private String domain;
     private TextView websiteName;
 
+    private static final String PREFS_NAME = "MyPrefsFile";
+    private static final String KEY_ACCEPTED = "acceptedTerms";
 
     public void blockString() {
         sp = PreferenceManager.getDefaultSharedPreferences(this);
@@ -89,6 +100,12 @@ public class MainActivity extends Activity {
         requestStoragePermission();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        boolean accepted = settings.getBoolean(KEY_ACCEPTED, false);
+
+        if (!accepted) {
+            showTermsDialog();
+        }
 
         sp = PreferenceManager.getDefaultSharedPreferences(this);
         Boolean noNews = sp.getBoolean("news", false);
@@ -218,4 +235,53 @@ public class MainActivity extends Activity {
             System.out.println(whiteHosts);
         }
     }
+    private void showTermsDialog() {
+        final TextView message = new TextView(this);
+        message.setText(getClickableSpan());
+        message.setMovementMethod(LinkMovementMethod.getInstance());
+        int padding = (int) (16 * getResources().getDisplayMetrics().density); // מרווח 16dp
+        message.setPadding(padding, padding, padding, padding);
+
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.terms_of_use_title)
+                .setView(message)
+                .setCancelable(false)
+                .setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = settings.edit();
+                        editor.putBoolean(KEY_ACCEPTED, true);
+                        editor.apply();
+                    }
+                })
+                .setNegativeButton(R.string.decline, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .show();
+    }
+
+    private Spannable getClickableSpan() {
+        String termsText = getString(R.string.terms_of_use_message);
+        SpannableString spannableString = new SpannableString(HtmlCompat.fromHtml(termsText, HtmlCompat.FROM_HTML_MODE_LEGACY));
+
+        String clickableText = "תנאי השימוש";
+        int start = termsText.indexOf(clickableText);
+        int end = start + clickableText.length();
+
+        if (start != -1) {
+            ClickableSpan clickableSpan = new ClickableSpan() {
+                @Override
+                public void onClick(@NonNull View widget) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://ashivered.github.io/SafeBrowserResources/terms"));
+                    startActivity(browserIntent);
+                }
+            };
+            spannableString.setSpan(clickableSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        return spannableString;
+    }
+
 }

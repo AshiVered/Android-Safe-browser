@@ -36,5 +36,9 @@
     <string name="contcat">יצירת קשר</string>
     <string name="contact_info" >ליצירת קשר, רעיונות, בקשות, תרומות וכדומה:
     \n ashivered.apps@gmail.com</string>
+    <string name="terms_of_use_title">תנאי השימוש</string>
+    <string name="terms_of_use_message">אני מסכים ל<a href="https://ashivered.github.io/SafeBrowserResources/terms">תנאי השימוש</a>.</string>
+    <string name="accept">אישור</string>
+    <string name="decline">ביטול</string>
 
 </resources>
