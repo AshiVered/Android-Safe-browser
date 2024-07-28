@@ -46,6 +46,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 public class MainActivity extends Activity {
@@ -265,23 +266,27 @@ public class MainActivity extends Activity {
     private Spannable getClickableSpan() {
         String termsText = getString(R.string.terms_of_use_message);
         SpannableString spannableString = new SpannableString(HtmlCompat.fromHtml(termsText, HtmlCompat.FROM_HTML_MODE_LEGACY));
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View widget) {
+                String url = Locale.getDefault().getLanguage().equals("he") ?
+                        "https://ashivered.github.io/SafeBrowserResources/terms" :
+                        "https://ashivered.github.io/SafeBrowserResources/terms_en";
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(browserIntent);
+            }
+        };
 
-        String clickableText = "תנאי השימוש";
-        int start = termsText.indexOf(clickableText);
-        int end = start + clickableText.length();
+        String linkText = Locale.getDefault().getLanguage().equals("he") ?
+                "תנאי השימוש" : "terms of use";
 
-        if (start != -1) {
-            ClickableSpan clickableSpan = new ClickableSpan() {
-                @Override
-                public void onClick(@NonNull View widget) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://ashivered.github.io/SafeBrowserResources/terms"));
-                    startActivity(browserIntent);
-                }
-            };
-            spannableString.setSpan(clickableSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
+        int start = termsText.indexOf(linkText);
+        int end = start + linkText.length();
+
+        spannableString.setSpan(clickableSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         return spannableString;
     }
+
 
 }
