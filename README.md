@@ -6,6 +6,11 @@ A simple Webview based browser with a whitelist of allowed URLs.
 It downloads content using the Phone's internal downloader.
 [![google-play-badge.png](https://mitmachim.top/assets/uploads/files/1666811423893-google-play-badge.png)](https://play.google.com/store/apps/details?id=aiv.ashivered.safebrowser) 
 
+## TODO list
+* Move to base on Mozzila GeckoView, no Android System WebView
+* Real UI (No HTML)
+* Load url list&catgories list from server, for example with json.
+
 ## Change default URL 
 Open `app/src/main/java/com/webview/app/MainActivity.java` and replace `https://ashivered.github.io/listofurls.html` on line **81** with the URL for your website
 ```java
