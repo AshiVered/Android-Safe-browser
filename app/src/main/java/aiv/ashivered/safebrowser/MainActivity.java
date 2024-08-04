@@ -9,10 +9,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.Html;
@@ -20,6 +20,8 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.JavascriptInterface;
@@ -36,18 +38,20 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.text.HtmlCompat;
 import androidx.preference.PreferenceManager;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.InputStreamReader;
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 
 public class MainActivity extends Activity {
     private final int STORAGE_PERMISSION_CODE = 1;
@@ -61,46 +65,22 @@ public class MainActivity extends Activity {
     private static final String PREFS_NAME = "MyPrefsFile";
     private static final String KEY_ACCEPTED = "acceptedTerms";
 
-    public void blockString() {
-        sp = PreferenceManager.getDefaultSharedPreferences(this);
-        Boolean url = sp.getBoolean("URL", false);
-        if (url) {
-            Toast.makeText(this, domain + " " + getString(R.string.blocked_page), Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(this, R.string.blocked_page, Toast.LENGTH_LONG).show();
-        }
-    }
-
-    public void onBackPressed() {
-        if (mWebView.canGoBack()) {
-            mWebView.goBack();
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    private void requestStoragePermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            new AlertDialog.Builder(this)
-                    .setTitle("Permission needed")
-                    .setMessage("This permission is needed to download files")
-                    .setPositiveButton("ok", (dialog, which) -> ActivityCompat.requestPermissions(MainActivity.this,
-                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE))
-                    .setNegativeButton("cancel", (dialog, which) -> dialog.dismiss())
-                    .create().show();
-        } else {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
-        }
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     @SuppressLint({"SetJavaScriptEnabled", "MissingInflatedId"})
     protected void onCreate(Bundle savedInstanceState) {
-        requestStoragePermission();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Set uncaught exception handler
+        Thread.setDefaultUncaughtExceptionHandler((thread, throwable) -> {
+            writeCrashLogToFile(throwable);
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1);
+        });
+
+        // Request permissions
+        requestStoragePermission();
+
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         boolean accepted = settings.getBoolean(KEY_ACCEPTED, false);
 
@@ -151,13 +131,80 @@ public class MainActivity extends Activity {
             mWebView.loadUrl("https://ashivered.github.io/SafeBrowserResources/index.html"); //Replace The Link Here
         }
 
-        // Find the button in the layout
         ImageButton settingsButton = findViewById(R.id.settings_button);
         settingsButton.setOnClickListener(v -> openSettingsActivity());
     }
 
+    private void requestStoragePermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                new AlertDialog.Builder(this)
+                        .setTitle("Permission needed")
+                        .setMessage("This permission is needed to write log files")
+                        .setPositiveButton("ok", (dialog, which) -> ActivityCompat.requestPermissions(MainActivity.this,
+                                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE))
+                        .setNegativeButton("cancel", (dialog, which) -> dialog.dismiss())
+                        .create().show();
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+            }
+        } else {
+            writeLogToFile();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == STORAGE_PERMISSION_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                writeLogToFile();
+            } else {
+                Log.e("MainActivity", "Permission denied");
+            }
+        }
+    }
+
+    private void writeLogToFile() {
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            File logFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "log.txt");
+
+            try (FileWriter fileWriter = new FileWriter(logFile, true)) {
+                Process process = Runtime.getRuntime().exec("logcat -d");
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    fileWriter.write(line + "\n");
+                }
+
+                fileWriter.flush();
+                Log.i("MainActivity", "Log written to " + logFile.getAbsolutePath());
+
+            } catch (IOException e) {
+                Log.e("MainActivity", "Error writing log to file", e);
+            }
+        } else {
+            Log.e("MainActivity", "External storage not available");
+        }
+    }
+
+    private void writeCrashLogToFile(Throwable throwable) {
+        File logFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "log.txt");
+        try (FileWriter fileWriter = new FileWriter(logFile, true)) {
+            fileWriter.write("Crash occurred at: " + System.currentTimeMillis() + "\n");
+            fileWriter.write("Exception: " + throwable.toString() + "\n");
+            for (StackTraceElement element : throwable.getStackTrace()) {
+                fileWriter.write("    at " + element.toString() + "\n");
+            }
+            fileWriter.write("\n");
+        } catch (IOException e) {
+            Log.e("MainActivity", "Error writing crash log to file", e);
+        }
+    }
+
     private void openSettingsActivity() {
-        // Replace SettingsActivity.class with your actual settings activity class
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
@@ -166,7 +213,6 @@ public class MainActivity extends Activity {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
-            // Clear the website name and icon at the start of loading a new page
             websiteName.setText("");
         }
         @Override
@@ -193,7 +239,6 @@ public class MainActivity extends Activity {
             Boolean photosInFinish = sp.getBoolean("photos", false);
             super.onPageFinished(view, url);
 
-            // Run JavaScript to get the website title
             view.loadUrl("javascript:window.AndroidFunction.setTitle(document.title);");
 
             if (photosInFinish) {
@@ -201,6 +246,7 @@ public class MainActivity extends Activity {
             }
         }
     }
+
     private class GetTitleUsingJs {
         @JavascriptInterface
         public void setTitle(String title) {
@@ -232,10 +278,10 @@ public class MainActivity extends Activity {
         @Override
         protected void onPostExecute(List<String> result) {
             whiteHosts.addAll(result);
-            // כאן תוכל לבצע פעולות נוספות עם הרשימה, אם יש צורך
             System.out.println(whiteHosts);
         }
     }
+
     private void showTermsDialog() {
         final TextView message = new TextView(this);
         message.setText(getClickableSpan());
@@ -283,10 +329,32 @@ public class MainActivity extends Activity {
         int start = termsText.indexOf(linkText);
         int end = start + linkText.length();
 
-        spannableString.setSpan(clickableSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        if (start >= 0 && end <= spannableString.length()) {
+            spannableString.setSpan(clickableSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        } else {
+            Log.e("MainActivity", "Invalid span indices: start=" + start + " end=" + end);
+        }
 
         return spannableString;
     }
 
 
+    public void blockString() {
+        sp = PreferenceManager.getDefaultSharedPreferences(this);
+        Boolean url = sp.getBoolean("URL", false);
+        if (url) {
+            Toast.makeText(this, domain + " " + getString(R.string.blocked_page), Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, R.string.blocked_page, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mWebView.canGoBack()) {
+            mWebView.goBack();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }
