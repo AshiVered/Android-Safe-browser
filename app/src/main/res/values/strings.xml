@@ -26,7 +26,7 @@
     <string name="show_url_off">Don\'t show blocked URL in blocking notification</string>
     <string name="url_title">Show URL</string>
     <string name="info">Information</string>
-    <string name="app_ver">3.0</string>
+    <string name="app_ver">3.1</string>
     <string name="app_dev_info">Developer</string>
     <string name="name_ver">Safe Browser version</string>
     <string name="app_dev">This app developed by Ashi Vered as open source. The source code is available on GitHub:
