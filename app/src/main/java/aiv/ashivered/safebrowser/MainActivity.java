@@ -18,9 +18,11 @@ import android.os.Environment;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.CookieManager;
@@ -40,6 +42,7 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.text.HtmlCompat;
+import androidx.core.view.GravityCompat;
 import androidx.preference.PreferenceManager;
 
 import java.io.BufferedReader;
@@ -52,6 +55,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import androidx.drawerlayout.widget.DrawerLayout;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends Activity {
     private final int STORAGE_PERMISSION_CODE = 1;
@@ -70,6 +75,32 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        ImageButton settingsButton = findViewById(R.id.settings_button);
+
+// פותח את תפריט הצד כשלוחצים על כפתור התפריט
+        settingsButton.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
+
+// מאזין ללחיצות בתפריט
+        navigationView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            drawerLayout.closeDrawer(GravityCompat.START);
+
+            if (id == R.id.nav_settings) {
+                openSettingsActivity();
+                return true;
+            } else if (id == R.id.nav_feedback) {
+                mWebView.loadUrl("https://docs.google.com/forms/d/e/1FAIpQLScrkV2nmeszXD5kdeyIZT1Z4H3XeRx3r2W59Np_bO72Rjwhxw/viewform?usp=header");
+                return true;
+            } else if (id == R.id.nav_about) {
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
+                return true;
+            }
+            return false;
+        });
+
 
         // Set uncaught exception handler
         Thread.setDefaultUncaughtExceptionHandler((thread, throwable) -> {
@@ -131,8 +162,8 @@ public class MainActivity extends Activity {
             mWebView.loadUrl("https://ashivered.github.io/SafeBrowserResources/index.html"); //Replace The Link Here
         }
 
-        ImageButton settingsButton = findViewById(R.id.settings_button);
-        settingsButton.setOnClickListener(v -> openSettingsActivity());
+        /* ImageButton settingsButton = findViewById(R.id.settings_button);
+        settingsButton.setOnClickListener(v -> openSettingsActivity());*/
     }
 
     private void requestStoragePermission() {

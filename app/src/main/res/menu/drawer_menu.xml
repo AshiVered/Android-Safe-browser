@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_settings"
+        android:title="הגדרות"
+        android:icon="@android:drawable/ic_menu_preferences" />
+    <item
+        android:id="@+id/nav_feedback"
+        android:title="פניות"
+        android:icon="@android:drawable/ic_menu_send" />
+    <item
+        android:id="@+id/nav_about"
+        android:title="אודות"
+        android:icon="@android:drawable/ic_menu_info_details" />
+</menu>

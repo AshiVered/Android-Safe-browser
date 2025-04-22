@@ -41,5 +41,6 @@
     <string name="terms_of_use_message">I agree to the <a href="https://ashivered.github.io/SafeBrowserResources/terms_en">terms of use</a>.</string>
     <string name="accept">Accept</string>
     <string name="decline">Decline</string>
+    <string name="title_activity_forms">" "</string>
 
 </resources>
