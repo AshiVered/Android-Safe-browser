@@ -19,13 +19,6 @@
             android:orientation="horizontal"
             android:padding="16dp"
             android:gravity="left">
-
-            <TextView
-                android:id="@+id/website_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
         </LinearLayout>
 
         <WebView
@@ -41,7 +34,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_settings"
             android:background="?android:attr/selectableItemBackground"
-            android:layout_alignParentEnd="true"
+            android:layout_alignParentEnd="false"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="16dp" />
     </RelativeLayout>

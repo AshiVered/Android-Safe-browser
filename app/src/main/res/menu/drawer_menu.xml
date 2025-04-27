@@ -2,14 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_settings"
-        android:title="הגדרות"
+        android:title="@string/title_activity_settings"
         android:icon="@android:drawable/ic_menu_preferences" />
     <item
         android:id="@+id/nav_feedback"
-        android:title="פניות"
+        android:title="@string/feedback"
         android:icon="@android:drawable/ic_menu_send" />
     <item
         android:id="@+id/nav_about"
-        android:title="אודות"
+        android:title="@string/about"
         android:icon="@android:drawable/ic_menu_info_details" />
+    <item
+        android:id="@+id/more_apps"
+        android:title="@string/more_apps"
+        android:icon="@drawable/more_apps" />
 </menu>

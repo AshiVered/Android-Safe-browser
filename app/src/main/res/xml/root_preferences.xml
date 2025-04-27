@@ -33,11 +33,6 @@
             android:summary="@string/app_ver"
             android:selectable="false" />
         <Preference
-            android:key="Developer"
-            android:title="@string/app_dev_info"
-            android:summary="@string/app_dev"
-            android:selectable="false" />
-        <Preference
             android:key="Contatact"
             android:title="@string/contcat"
             android:summary="@string/contact_info"

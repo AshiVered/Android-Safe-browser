@@ -65,8 +65,6 @@ public class MainActivity extends Activity {
     private SharedPreferences sp;
     private List<String> whiteHosts = new ArrayList<>();
     private String domain;
-    private TextView websiteName;
-
     private static final String PREFS_NAME = "MyPrefsFile";
     private static final String KEY_ACCEPTED = "acceptedTerms";
 
@@ -95,6 +93,10 @@ public class MainActivity extends Activity {
                 return true;
             } else if (id == R.id.nav_about) {
                 Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.more_apps) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/developer?id=%D7%90%D7%A9%D7%99+%D7%95%D7%A8%D7%93"));
                 startActivity(intent);
                 return true;
             }
@@ -126,8 +128,6 @@ public class MainActivity extends Activity {
         new LoadHostsTask().execute(urlToLoad);
 
         mWebView = findViewById(R.id.activity_main_webview);
-        mWebView.addJavascriptInterface(new GetTitleUsingJs(), "AndroidFunction");
-        websiteName = findViewById(R.id.website_name);
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
@@ -242,11 +242,6 @@ public class MainActivity extends Activity {
 
     private class HelloWebViewClient extends WebViewClient {
         @Override
-        public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            super.onPageStarted(view, url, favicon);
-            websiteName.setText("");
-        }
-        @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             Boolean photos = sp.getBoolean("photos", false);
             WebSettings webFilters = mWebView.getSettings();
@@ -275,13 +270,6 @@ public class MainActivity extends Activity {
             if (photosInFinish) {
                 view.loadUrl("javascript: (() => { function handle(node) { if (node.tagName === 'IMG' && node.style.visibility !== 'hidden' && node.width > 32 && node.height > 32) { const blankImageUrl = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='; const { width, height } = window.getComputedStyle(node); node.src = blankImageUrl; node.style.visibility = 'hidden'; node.style.background = 'none'; node.style.backgroundImage = `url(${blankImageUrl})`; node.style.width = width; node.style.height = height; } else if (node.tagName === 'VIDEO' || node.tagName === 'IFRAME' || ((!node.type || node.type.includes('video')) && node.tagName === 'SOURCE') || node.tagName === 'OBJECT') { node.remove(); } } document.querySelectorAll('img,video,source,object,embed,iframe,[type^=video]').forEach(handle); const observer = new MutationObserver((mutations) => mutations.forEach((mutation) => mutation.addedNodes.forEach(handle))); observer.observe(document.body, { childList: true, subtree: true }); })();");
             }
-        }
-    }
-
-    private class GetTitleUsingJs {
-        @JavascriptInterface
-        public void setTitle(String title) {
-            runOnUiThread(() -> websiteName.setText(title));
         }
     }
 

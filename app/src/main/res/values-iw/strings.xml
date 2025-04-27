@@ -28,18 +28,34 @@
     <string name="app_ver">3.1</string>
     <string name="app_dev_info">מפתח</string>
     <string name="name_ver">גרסת דפדפן מוגן</string>
-    <string name="app_dev">האפליקציה מפותחת על ידי אשי ורד, כקוד פתוח. קוד המקור זמין בGithub:
-    \n https://github.com/AshiVered/Android-Safe-Browser
-    \n האפליקציה מפותחת בהתנדבות, ללא כל רווח כספי.
-אם נהניתם - אשמח שתתרמו קצת :), צרו איתי קשר במייל.
-    </string>
     <string name="contcat">יצירת קשר</string>
     <string name="contact_info" >ליצירת קשר, רעיונות, בקשות, תרומות וכדומה:
     \n ashivered.apps@gmail.com</string>
+    <string name="app_info">"דפדפן מוגן" הוא דפדפן אינטרנט מסונן, שפותח על ידי אשי ורד כפרויקט קוד פתוח.\n
+מטרת האפליקציה היא לאפשר גלישה בטוחה ומוגנת על ידי סינון אתרים, תוך הקפדה על גישה רק לדומיינים מאושרים מראש.\n
+האפליקציה מיועדת לכל מי שמבקש סביבה נקייה מתכנים בעייתיים.\n
+\n
+הפיתוח מתבצע בהתנדבות, מתוך חזון להנגיש כלי אמין, פשוט ונוח לשימוש, ללא מנגנוני פרסומות, מעקב או מטרות רווח.\n
+\n
+קוד המקור של האפליקציה זמין לצפייה ולהורדה ב־GitHub:\n
+https://github.com/AshiVered/Android-Safe-Browser\n
+\n
+אם נהניתם מהשימוש באפליקציה, מצאתם אותה מועילה, או יש לכם רעיונות לשיפור, אשמח מאוד לשמוע מכם!\n
+צרו איתי קשר במייל:\n
+ashivered.apps@gmail.com\n
+\n
+נ.ב כאמור, האפליקציה מפותחת בהתנדבות גמורה, וללא פרסומות. אך הפיתוח דורש הרבה זמן ומאמץ. \n
+אם אתם מעוניינים לתמוך בי, ולעזור לי להמשיך לפתח את האפליקציה, אשמח שתתרמו אפילו רק כמה שקלים.\n
+אז דברו איתי במייל :)
+
+    </string>
     <string name="terms_of_use_title">תנאי השימוש</string>
     <string name="terms_of_use_message">אני מסכים ל<a href="https://ashivered.github.io/SafeBrowserResources/terms">תנאי השימוש</a>.</string>
     <string name="accept">אישור</string>
     <string name="decline">ביטול</string>
     <string name="title_activity_forms">" "</string>
+    <string name="feedback">פניות ומשוב</string>
+    <string name="about">אודות</string>
+    <string name="more_apps">עוד אפליקציות</string>
 
 </resources>

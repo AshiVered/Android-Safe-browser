@@ -44,9 +44,9 @@
             android:exported="false"
             android:label="@string/title_activity_settings" />
         <activity
-            android:name=".FormsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_forms" />
+            android:name=".AboutActivity"
+            android:exported="true" />
+
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize"

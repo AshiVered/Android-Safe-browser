@@ -29,18 +29,33 @@
     <string name="app_ver">3.1</string>
     <string name="app_dev_info">Developer</string>
     <string name="name_ver">Safe Browser version</string>
-    <string name="app_dev">This app developed by Ashi Vered as open source. The source code is available on GitHub:
-    \n https://github.com/AshiVered/Android-Safe-Browser
-    \n The application is developed voluntarily, without any financial gain.
-        If you enjoyed it - I would love for you to donate a little :), contact me by email.
-    </string>
    <string name="contcat">Contact</string>
     <string name="contact_info">For contact, ideas, requests, donations etc.:
     \n ashivered.apps@gmail.com</string>
+    <string name="app_info">"Safe Browser" is a filtered internet browser developed by Ashi Vered as an open-source project.\n
+The goal of the app is to provide a safe browsing experience by filtering websites, granting access only to pre-approved domains.\n
+It’s designed for anyone who wants a clean and safe online environment, free from harmful content.\n
+\n
+The development is entirely voluntary, with a vision to offer a reliable, simple, and easy-to-use tool, without ads, tracking, or any commercial interests.\n
+The source code for the app is available for viewing and download on GitHub:\n
+https://github.com/AshiVered/Android-Safe-Browser\n
+\n
+If you’ve enjoyed using the app, found it helpful, or have any suggestions for improvements, I’d love to hear from you!\n
+Feel free to contact me via email:\n
+ashivered.apps@gmail.com\n
+\n
+P.S. As mentioned, this app is developed entirely on a voluntary basis and without any ads. However, it requires a lot of time and effort to maintain and improve.\n
+If you’d like to support me and help continue the development of the app, I’d greatly appreciate any small donation.\n
+Please feel free to reach out to me via email :)
+
+    </string>
     <string name="terms_of_use_title">Terms of Use</string>
     <string name="terms_of_use_message">I agree to the <a href="https://ashivered.github.io/SafeBrowserResources/terms_en">terms of use</a>.</string>
     <string name="accept">Accept</string>
     <string name="decline">Decline</string>
     <string name="title_activity_forms">" "</string>
+    <string name="feedback">Feedback</string>
+    <string name="about">About</string>
+    <string name="more_apps">More apps</string>
 
 </resources>

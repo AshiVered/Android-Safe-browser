@@ -18,13 +18,6 @@
             android:orientation="horizontal"
             android:padding="16dp"
             android:gravity="right">
-
-            <TextView
-                android:id="@+id/website_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
         </LinearLayout>
 
         <!-- WebView -->
