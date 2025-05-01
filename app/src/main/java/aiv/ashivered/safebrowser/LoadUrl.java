@@ -53,28 +53,22 @@ public class LoadUrl extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         requestStoragePermission();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_load_url); // Ensure this is the correct layout
+        setContentView(R.layout.activity_load_url);
 
         sp = PreferenceManager.getDefaultSharedPreferences(this);
 
-        // Determine URL based on SharedPreferences
         boolean noNews = sp.getBoolean("news", false);
         String urlToLoad = noNews ? "https://ashivered.github.io/SafeBrowserResources/list_nonews.txt" : "https://ashivered.github.io/SafeBrowserResources/list_news.txt";
 
-        // Load whiteHosts from the URL specified in SharedPreferences
         new Thread(() -> {
             whiteHosts = loadWhiteHostsFromUrl(urlToLoad);
             runOnUiThread(this::initializeWebView);
         }).start();
 
-        // Initialize settings button
-        ImageButton settingsButton = findViewById(R.id.settings_button);
-        settingsButton.setOnClickListener(v -> openSettingsActivity());
     }
 
     private void initializeWebView() {
         mWebView = findViewById(R.id.activity_load_url_webview);
-        mWebView.addJavascriptInterface(new GetTitleUsingJs(), "AndroidFunction");
         websiteName = findViewById(R.id.website_name);
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -120,10 +114,6 @@ public class LoadUrl extends Activity {
         }
     }
 
-    private void openSettingsActivity() {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
-    }
 
     private void requestStoragePermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
@@ -184,12 +174,6 @@ public class LoadUrl extends Activity {
 
     private class HelloWebViewClient extends WebViewClient {
         @Override
-        public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            super.onPageStarted(view, url, favicon);
-            // Clear the website name and icon at the start of loading a new page
-            websiteName.setText("");
-        }
-        @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             Boolean photos = sp.getBoolean("photos", false);
             WebSettings webFilters = mWebView.getSettings();
@@ -219,11 +203,5 @@ public class LoadUrl extends Activity {
             }
         }
 
-    }
-    private class GetTitleUsingJs {
-        @JavascriptInterface
-        public void setTitle(String title) {
-            runOnUiThread(() -> websiteName.setText(title));
-        }
     }
 }

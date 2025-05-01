@@ -25,7 +25,7 @@
     <string name="show_url_on">הצג את כתובת האתר שנחסם בהתראת החסימה</string>
     <string name="url_title">הצגת URL</string>
     <string name="info">מידע</string>
-    <string name="app_ver">3.1</string>
+    <string name="app_ver">4.0</string>
     <string name="app_dev_info">מפתח</string>
     <string name="name_ver">גרסת דפדפן מוגן</string>
     <string name="contcat">יצירת קשר</string>
@@ -57,5 +57,26 @@ ashivered.apps@gmail.com\n
     <string name="feedback">פניות ומשוב</string>
     <string name="about">אודות</string>
     <string name="more_apps">עוד אפליקציות</string>
+    <!-- Settings Lock -->
+    <string name="security_settings">אבטחה</string>
+    <string name="lock_settings_title">נעל הגדרות</string>
+    <string name="lock_settings_summary_on">ההגדרות נעולות באמצעות סיסמה</string>
+    <string name="lock_settings_summary_off">ההגדרות אינן נעולות</string>
+    <string name="set_password_title">הגדר סיסמה</string>
+    <string name="confirm_password_title">אשר סיסמה</string>
+    <string name="enter_password_title">הזן סיסמה</string>
+    <string name="password_hint">סיסמה (4–8 תווים)</string>
+    <string name="password_mismatch">הסיסמאות אינן תואמות.</string>
+    <string name="password_set_success">הסיסמה הוגדרה בהצלחה.</string>
+    <string name="password_cleared_success">נעילת הסיסמה בוטלה.</string>
+    <string name="incorrect_password">סיסמה שגויה.</string>
+    <string name="password_invalid_format">הסיסמה חייבת להיות באורך 4–8 תווים.</string>
+    <string name="cancel">ביטול</string>
+    <string name="ok">אישור</string>
+    <string name="set">הגדר</string>
+    <string name="confirm">אשר</string>
+    <string name="enter">הזן</string>
+    <string name="disable">בטל נעילה</string>
+    <string name="settings_locked">ההגדרות נעולות. הזן סיסמה.</string>
 
 </resources>

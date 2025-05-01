@@ -26,7 +26,7 @@
     <string name="show_url_off">Don\'t show blocked URL in blocking notification</string>
     <string name="url_title">Show URL</string>
     <string name="info">Information</string>
-    <string name="app_ver">3.1</string>
+    <string name="app_ver">4.0</string>
     <string name="app_dev_info">Developer</string>
     <string name="name_ver">Safe Browser version</string>
    <string name="contcat">Contact</string>
@@ -57,5 +57,26 @@ Please feel free to reach out to me via email :)
     <string name="feedback">Feedback</string>
     <string name="about">About</string>
     <string name="more_apps">More apps</string>
+    <!-- Settings Lock -->
+    <string name="security_settings">Security</string>
+    <string name="lock_settings_title">Lock Settings</string>
+    <string name="lock_settings_summary_on">Settings are locked with a password</string>
+    <string name="lock_settings_summary_off">Settings are unlocked</string>
+    <string name="set_password_title">Set Password</string>
+    <string name="confirm_password_title">Confirm Password</string>
+    <string name="enter_password_title">Enter Password</string>
+    <string name="password_hint">Password (4-8 chars)</string>
+    <string name="password_mismatch">Passwords do not match.</string>
+    <string name="password_set_success">Password set successfully.</string>
+    <string name="password_cleared_success">Password lock disabled.</string>
+    <string name="incorrect_password">Incorrect password.</string>
+    <string name="password_invalid_format">Password must be 4–8 characters long.</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="set">Set</string>
+    <string name="confirm">Confirm</string>
+    <string name="enter">Enter</string>
+    <string name="disable">Disable</string>
+    <string name="settings_locked">Settings are locked. Enter password.</string>
 
 </resources>

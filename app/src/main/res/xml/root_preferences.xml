@@ -2,7 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory app:title="@string/settigs_block">
-
+        <!-- Existing preferences -->
         <SwitchPreferenceCompat
             android:key="photos"
             app:summaryOff="@string/block_media_off"
@@ -16,17 +16,27 @@
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/settigs_general">
-
+        <!-- Existing preferences -->
         <SwitchPreferenceCompat
             android:key="URL"
             app:summaryOff="@string/show_url_off"
             app:summaryOn="@string/show_url_on"
             app:title="@string/url_title" />
-
-
     </PreferenceCategory>
 
+    <!-- Add this new category and preference -->
+    <PreferenceCategory app:title="@string/security_settings">
+        <SwitchPreferenceCompat
+            app:key="lock_settings"
+            app:title="@string/lock_settings_title"
+            app:summaryOff="@string/lock_settings_summary_off"
+            app:summaryOn="@string/lock_settings_summary_on" />
+    </PreferenceCategory>
+    <!-- End of new section -->
+
+
     <PreferenceCategory app:title="@string/info">
+        <!-- Existing preferences -->
         <Preference
             android:key="Version"
             android:title="@string/name_ver"
@@ -37,8 +47,6 @@
             android:title="@string/contcat"
             android:summary="@string/contact_info"
             android:selectable="false" />
-
-
     </PreferenceCategory>
 
 </PreferenceScreen>
