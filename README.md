@@ -8,9 +8,8 @@ It downloads content using the Phone's internal downloader.
 [![Get it on Google Play](assets/google-play-badge.png)](https://play.google.com/store/apps/details?id=aiv.ashivered.safebrowser)
 
 ## TODO list
-* ~ Move to base on Mozzila GeckoView, no Android System WebView ~ DONE!
-* Real UI (No HTML)
-* ~ Load url list&catgories list from server, for example with json. ~ DONE!
+* ~Move to base on Mozzila GeckoView, no Android System WebView~ DONE!
+* ~Load url list&catgories list from server, for example with json.~ DONE!
 
 ## Change default URL 
 Open `app/src/main/java/aiv/ashivered/safebrowser/MainActivity.java` 
