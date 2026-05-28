@@ -4,7 +4,8 @@
 # Android-Safe-browser
 A simple GeckoView based browser with a whitelist of allowed URLs.
 It downloads content using the Phone's internal downloader.
-[![google-play-badge.png](https://mitmachim.top/assets/uploads/files/1666811423893-google-play-badge.png)](https://play.google.com/store/apps/details?id=aiv.ashivered.safebrowser) 
+
+[![Get it on Google Play](assets/google-play-badge.png)](https://play.google.com/store/apps/details?id=aiv.ashivered.safebrowser)
 
 ## TODO list
 * ~ Move to base on Mozzila GeckoView, no Android System WebView ~ DONE!
