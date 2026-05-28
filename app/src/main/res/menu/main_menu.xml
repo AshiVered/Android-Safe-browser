@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_settings"
+        android:title="@string/title_activity_settings"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_feedback"
+        android:title="@string/feedback"
+        android:orderInCategory="200"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_share"
+        android:title="@string/share"
+        android:orderInCategory="300"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_about"
+        android:title="@string/about"
+        android:orderInCategory="400"
+        app:showAsAction="never" />
+</menu>

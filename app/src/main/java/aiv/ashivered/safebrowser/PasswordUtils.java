@@ -13,9 +13,7 @@ public class PasswordUtils {
     private static final String PREFS_SETTINGS_PASSWORD_HASH = "prefs_settings_password_hash";
 
     private static final Pattern PASSWORD_PATTERN =
-            Pattern.compile("^[\\w!@#$%^&*()_+\\-=\\[\\]{};':\",./<>?]{4,8}$");
-
-
+            Pattern.compile("^[\\w!@#$%^&*()_+\\-=\\[\\]{};':\",./\\<>?]{4,8}$");
 
     private static SharedPreferences getPrefs(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
@@ -45,13 +43,9 @@ public class PasswordUtils {
         return getPasswordHash(context) != null;
     }
 
-
     public static boolean isValidPasswordFormat(String password) {
-        if (password == null) {
-            return false;
-        }
+        if (password == null) return false;
         return PASSWORD_PATTERN.matcher(password).matches();
-
     }
 
     public static String hashPassword(String password) {
@@ -74,9 +68,7 @@ public class PasswordUtils {
 
     public static boolean checkPassword(Context context, String inputPassword) {
         String storedHash = getPasswordHash(context);
-        if (storedHash == null || inputPassword == null) {
-            return false;
-        }
+        if (storedHash == null || inputPassword == null) return false;
         String inputHash = hashPassword(inputPassword);
         return storedHash.equals(inputHash);
     }

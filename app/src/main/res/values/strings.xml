@@ -1,82 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Safe Browser</string>
     <string name="blocked_page">This site is not allowed!</string>
     <string name="downloading">Downloading file...</string>
+    <string name="error_loading_list">Error loading allowed sites list</string>
     <string name="title_activity_settings">Settings</string>
-
-    <!-- Preference Titles -->
-    <string name="settigs_block">Block settings</string>
-
-    <!-- Sync Preferences -->
-    <string name="photos_title">Block media</string>
-    <string name="attachment_title">Block media</string>
-    <string name="block_media_on">The media is blocked. You can\'t see photos, video, and etc. in sites.</string>
-    <string name="block_media_off">The media is not blocked.</string>
-    <string name="block_ads">Block Google ads in sites</string>
-    <string name="block_ads_on">Ads are blocked.</string>
-    <string name="block_ads_off">Ads not blocked.</string>
-    <string name="PhotosBlocked">Media blocked</string>
-    <string name="PhotosNotBlocked">Media not blocked</string>
-    <string name="block_news_off">You can access news sites.</string>
-    <string name="block_news_on">News sites are blocked.</string>
-    <string name="news_title">Block news</string>
-    <string name="settigs_general">General settings</string>
-    <string name="show_url_on">Show blocked URL in blocking notification</string>
-    <string name="show_url_off">Don\'t show blocked URL in blocking notification</string>
-    <string name="url_title">Show URL</string>
-    <string name="info">Information</string>
-    <string name="app_ver">4.0</string>
-    <string name="app_dev_info">Developer</string>
-    <string name="name_ver">Safe Browser version</string>
-   <string name="contcat">Contact</string>
-    <string name="contact_info">For contact, ideas, requests, donations etc.:
-    \n ashivered.apps@gmail.com</string>
-    <string name="app_info">"Safe Browser" is a filtered internet browser developed by Ashi Vered as an open-source project.\n
-The goal of the app is to provide a safe browsing experience by filtering websites, granting access only to pre-approved domains.\n
-It’s designed for anyone who wants a clean and safe online environment, free from harmful content.\n
-\n
-The development is entirely voluntary, with a vision to offer a reliable, simple, and easy-to-use tool, without ads, tracking, or any commercial interests.\n
-The source code for the app is available for viewing and download on GitHub:\n
-https://github.com/AshiVered/Android-Safe-Browser\n
-\n
-If you’ve enjoyed using the app, found it helpful, or have any suggestions for improvements, I’d love to hear from you!\n
-Feel free to contact me via email:\n
-ashivered.apps@gmail.com\n
-\n
-P.S. As mentioned, this app is developed entirely on a voluntary basis and without any ads. However, it requires a lot of time and effort to maintain and improve.\n
-If you’d like to support me and help continue the development of the app, I’d greatly appreciate any small donation.\n
-Please feel free to reach out to me via email :)
-
-    </string>
+    <string name="about">About</string>
+    <string name="feedback">Send Feedback</string>
+    <string name="share">Share with Friends</string>
+    <string name="share_text">I use Safe Browser – only approved websites! 🔒 Download: https://play.google.com/store/apps/details?id=aiv.ashivered.safebrowser</string>
+    <!-- Terms of Use -->
     <string name="terms_of_use_title">Terms of Use</string>
-    <string name="terms_of_use_message">I agree to the <a href="https://ashivered.github.io/SafeBrowserResources/terms_en">terms of use</a>.</string>
+    <string name="terms_of_use_message">I agree to the &lt;a href="https://ashivered.github.io/SafeBrowserResources/terms_en"&gt;terms of use&lt;/a&gt;.</string>
     <string name="accept">Accept</string>
     <string name="decline">Decline</string>
-    <string name="title_activity_forms">" "</string>
-    <string name="feedback">Feedback</string>
-    <string name="about">About</string>
-    <string name="more_apps">More apps</string>
-    <!-- Settings Lock -->
+
+    <!-- Settings categories -->
+    <string name="settigs_block">Block Settings</string>
+    <string name="settigs_general">General Settings</string>
     <string name="security_settings">Security</string>
+    <string name="info">Information</string>
+
+    <!-- Block Media -->
+    <string name="photos_title">Block Media</string>
+    <string name="block_media_on">Media is blocked. You cannot see photos or videos on sites.</string>
+    <string name="block_media_off">Media is not blocked.</string>
+
+    <!-- Block News -->
+    <string name="news_title">Block News Sites</string>
+    <string name="block_news_on">News sites are blocked.</string>
+    <string name="block_news_off">News sites are allowed.</string>
+
+    <!-- Show URL -->
+    <string name="url_title">Show URL</string>
+    <string name="show_url_on">Show blocked URL in blocking notification</string>
+    <string name="show_url_off">Don\'t show blocked URL in blocking notification</string>
+
+    <!-- Lock Settings -->
     <string name="lock_settings_title">Lock Settings</string>
     <string name="lock_settings_summary_on">Settings are locked with a password</string>
     <string name="lock_settings_summary_off">Settings are unlocked</string>
     <string name="set_password_title">Set Password</string>
     <string name="confirm_password_title">Confirm Password</string>
     <string name="enter_password_title">Enter Password</string>
-    <string name="password_hint">Password (4-8 chars)</string>
+    <string name="settings_locked">Settings are locked. Enter password.</string>
+    <string name="password_hint">Password (4–8 chars)</string>
     <string name="password_mismatch">Passwords do not match.</string>
     <string name="password_set_success">Password set successfully.</string>
     <string name="password_cleared_success">Password lock disabled.</string>
     <string name="incorrect_password">Incorrect password.</string>
     <string name="password_invalid_format">Password must be 4–8 characters long.</string>
+
+    <!-- Buttons -->
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
     <string name="set">Set</string>
     <string name="confirm">Confirm</string>
     <string name="enter">Enter</string>
     <string name="disable">Disable</string>
-    <string name="settings_locked">Settings are locked. Enter password.</string>
 
+    <!-- App Info -->
+    <string name="name_ver">Safe Browser version</string>
+    <string name="app_ver">5.0</string>
+    <string name="contcat">Contact</string>
+    <string name="contact_info">For contact, ideas, requests, donations etc.:\n ashivered.apps@gmail.com</string>
+    <string name="app_info">"Safe Browser" is a filtered internet browser developed by Ashi Vered as an open-source project.\n\nThe app provides a safe browsing experience by filtering websites, granting access only to pre-approved domains.\n\nDevelopment is entirely voluntary, without ads, tracking, or commercial interests.\n\nSource code: https://github.com/AshiVered/Android-Safe-Browser\n\nContact: ashivered.apps@gmail.com</string>
 </resources>

@@ -1,49 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory app:title="@string/settigs_block">
-        <!-- Existing preferences -->
         <SwitchPreferenceCompat
             android:key="photos"
-            app:summaryOff="@string/block_media_off"
+            app:title="@string/photos_title"
             app:summaryOn="@string/block_media_on"
-            app:title="@string/photos_title" />
+            app:summaryOff="@string/block_media_off" />
         <SwitchPreferenceCompat
             android:key="news"
-            app:summaryOff="@string/block_news_off"
+            app:title="@string/news_title"
             app:summaryOn="@string/block_news_on"
-            app:title="@string/news_title" />
+            app:summaryOff="@string/block_news_off" />
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/settigs_general">
-        <!-- Existing preferences -->
         <SwitchPreferenceCompat
             android:key="URL"
-            app:summaryOff="@string/show_url_off"
+            app:title="@string/url_title"
             app:summaryOn="@string/show_url_on"
-            app:title="@string/url_title" />
+            app:summaryOff="@string/show_url_off" />
     </PreferenceCategory>
 
-    <!-- Add this new category and preference -->
     <PreferenceCategory app:title="@string/security_settings">
         <SwitchPreferenceCompat
             app:key="lock_settings"
             app:title="@string/lock_settings_title"
-            app:summaryOff="@string/lock_settings_summary_off"
-            app:summaryOn="@string/lock_settings_summary_on" />
+            app:summaryOn="@string/lock_settings_summary_on"
+            app:summaryOff="@string/lock_settings_summary_off" />
     </PreferenceCategory>
-    <!-- End of new section -->
-
 
     <PreferenceCategory app:title="@string/info">
-        <!-- Existing preferences -->
         <Preference
             android:key="Version"
             android:title="@string/name_ver"
             android:summary="@string/app_ver"
             android:selectable="false" />
         <Preference
-            android:key="Contatact"
+            android:key="Contact"
             android:title="@string/contcat"
             android:summary="@string/contact_info"
             android:selectable="false" />

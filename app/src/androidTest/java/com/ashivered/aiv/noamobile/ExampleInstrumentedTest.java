@@ -1,4 +1,4 @@
-package aiv.ashivered.safebrowser;
+package com.ashivered.aiv.noamobile;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("aiv.ashivered.safebrowser", appContext.getPackageName());
+        assertEquals("com.ashivered.aiv.noamobile", appContext.getPackageName());
     }
 }

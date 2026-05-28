@@ -1,4 +1,4 @@
-package aiv.ashivered.safebrowser;
+package com.ashivered.aiv.noamobile;
 
 import org.junit.Test;
 
