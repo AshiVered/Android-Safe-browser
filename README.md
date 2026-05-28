@@ -13,7 +13,7 @@ It downloads content using the Phone's internal downloader.
 * ~ Load url list&catgories list from server, for example with json. ~ DONE!
 
 ## Change default URL 
-Open `app/src/main/java/com/webview/app/MainActivity.java` and replace `https://ashivered.github.io/listofurls.html` on line **111/112** with the URL for your website
+Open `app/src/main/java/com/webview/app/MainActivity.java` and replace in line **111/112** with the URL for your website
 ```java
     private static final String URL_HOME             = "https://ashivered.github.io/SafeBrowserResources/index.html";
     private static final String URL_HOME_NONEWS      = "https://ashivered.github.io/SafeBrowserResources/index_nonews.html";
