@@ -10,21 +10,16 @@ android {
         applicationId 'aiv.ashivered.safebrowser'
         minSdk 24
         targetSdk 35
-        versionCode 11
+        versionCode 12
         versionName '5.0'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    // ABI Splits (smaller APK size)
-    splits {
-        abi {
-            enable true
-            reset()
-            include 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
-            universalApk true
-        }
-    }
+    // NOTE: splits.abi is intentionally NOT defined here.
+    // When building an AAB for Google Play, Play Delivery splits by ABI automatically.
+    // Defining splits.abi here conflicts with AAB delivery and causes GeckoView to
+    // crash with SIGSEGV (null pointer in native launcher thread) on launch.
 
     buildTypes {
         release {
@@ -47,6 +42,15 @@ android {
     packagingOptions {
         resources {
             excludes += ['META-INF/LICENSE', 'META-INF/NOTICE']
+        }
+        // GeckoView loads native .so files directly from the zip path
+        // (e.g. split_config.arm64_v8a.apk!/lib/arm64-v8a/libxul.so).
+        // dlopen() on a zip path requires the file to be UNCOMPRESSED and
+        // page-aligned. useLegacyPackaging=false (the default for modern AGP)
+        // stores .so files uncompressed. useLegacyPackaging=true would compress
+        // them -> dlopen returns null -> SIGSEGV at address 0x0.
+        jniLibs {
+            useLegacyPackaging = false
         }
     }
 }
